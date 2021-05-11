@@ -1,11 +1,12 @@
 class LaunchObject{
-    constructor(bodyA,pointB){
+    constructor(body,pointB){
         var options ={
-            bodyA: bodyA,
+            bodyA: body,
             pointB: pointB,
             stiffness: 0.01,
             length: 10
         }
+    this.bodyA=body;
     this.pointB = pointB;
     this.launchObject= Constraint.create(options);
     World.add(world, this.launchObject);
@@ -19,6 +20,11 @@ class LaunchObject{
     }
 
     display(){
-
+     if(this.launchObject.bodyA){
+         var pointA=this.bodyA.position
+         var pointB=this.pointB
+         strokeWeight(2)
+         line(pointA.x,pointA.y,pointB.x,pointB.y)
+     }
     }
 }
